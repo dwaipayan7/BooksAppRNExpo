@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/User';
+import User from '../models/User.js';
 import { config } from 'dotenv';
 config()
 
@@ -15,7 +15,7 @@ config()
 //     }
 // })
 
-export const protectRoute = async(req, res, next) => {
+export const protectRoute = async (req, res, next) => {
     try {
 
         const authHeader = req.headers.authorization;
@@ -33,9 +33,9 @@ export const protectRoute = async(req, res, next) => {
         next();
 
 
-        
+
     } catch (error) {
-        
+
         res.status(401).json({ message: "Not authorized, token failed" });
 
     }
